@@ -56,12 +56,12 @@ Or alternatively you can [run it locally](https://diffusionui.readthedocs.io/en/
 
 ### Docker
 
-The Docker image is automatically built and pushed to the [GitHub Container Registry (GHCR)](https://github.com/leszekhanusz/diffusion-ui/pkgs/container/diffusion-ui).
+The Docker image is automatically built and pushed to the [GitHub Container Registry (GHCR)](https://github.com/djnixy/diffusion-ui/pkgs/container/diffusion-ui).
 
 #### Pulling the image
 
 ```bash
-docker pull ghcr.io/leszekhanusz/diffusion-ui:latest
+docker pull ghcr.io/djnixy/diffusion-ui:latest
 ```
 
 #### Running the container
@@ -69,7 +69,7 @@ docker pull ghcr.io/leszekhanusz/diffusion-ui:latest
 To run the container on port 8080:
 
 ```bash
-docker run -d -p 8080:80 ghcr.io/leszekhanusz/diffusion-ui:latest
+docker run -d -p 8080:80 ghcr.io/djnixy/diffusion-ui:latest
 ```
 
 Then open `http://localhost:8080` in your browser.
