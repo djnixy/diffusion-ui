@@ -72,6 +72,14 @@ To run the container on port 8080:
 docker run -d -p 8080:80 ghcr.io/djnixy/diffusion-ui:latest
 ```
 
+#### Using Docker Compose
+
+You can also use the provided `compose.yaml` file:
+
+```bash
+docker compose up -d
+```
+
 Then open `http://localhost:8080` in your browser.
 
 ## Backends
