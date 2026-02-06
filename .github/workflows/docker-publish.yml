@@ -65,7 +65,7 @@ jobs:
             type=sha,format=long
             type=edge,branch=main
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=${{ github.head_ref }},enable=${{ github.event_name == 'pull_request' }}
+            type=raw,value=dev,enable=${{ github.event_name == 'pull_request' && github.head_ref != 'main' }}
 
       - name: Build and push Docker image
         id: build-and-push
