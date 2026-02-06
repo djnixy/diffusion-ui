@@ -54,6 +54,26 @@ The frontend is available at [diffusionui.com](http://diffusionui.com)
 
 Or alternatively you can [run it locally](https://diffusionui.readthedocs.io/en/latest/frontend.html).
 
+### Docker
+
+The Docker image is automatically built and pushed to the [GitHub Container Registry (GHCR)](https://github.com/leszekhanusz/diffusion-ui/pkgs/container/diffusion-ui).
+
+#### Pulling the image
+
+```bash
+docker pull ghcr.io/leszekhanusz/diffusion-ui:latest
+```
+
+#### Running the container
+
+To run the container on port 8080:
+
+```bash
+docker run -d -p 8080:80 ghcr.io/leszekhanusz/diffusion-ui:latest
+```
+
+Then open `http://localhost:8080` in your browser.
+
 ## Backends
 
 ### Automatic1111 Stable Diffusion
