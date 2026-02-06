@@ -4,4 +4,8 @@ services:
     image: ghcr.io/djnixy/diffusion-ui:latest
     ports:
       - "8080:80"
+    environment:
+      - VITE_BACKEND_URL=http://localhost:7860
+      - VITE_FORGE_URL=http://localhost:7860
+      - VITE_DEFAULT_BACKEND_ID=forge
     restart: unless-stopped

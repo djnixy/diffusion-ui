@@ -8,15 +8,25 @@ import { initGradio } from "@/actions/generate_gradio";
 import deepmerge from "deepmerge";
 import backend_latent_diffusion from "@/backends/gradio/latent-diffusion.json";
 import backend_stable_diffusion from "@/backends/gradio/stable-diffusion.json";
-import backend_stable_diffusion_automatic1111 from "@/backends/gradio/stable-diffusion-automatic1111.json";
+import backend_stable_diffusion_forge from "@/backends/gradio/stable-diffusion-forge.json";
 
 const backends_json = [
   backend_latent_diffusion,
   backend_stable_diffusion,
-  backend_stable_diffusion_automatic1111,
+  backend_stable_diffusion_forge,
 ];
 
 backends_json.forEach(function (backend) {
+  const backend_url_env = import.meta.env.VITE_BACKEND_URL;
+  const forge_url_env = import.meta.env.VITE_FORGE_URL;
+
+  if (backend_url_env) {
+    backend.base_url = backend_url_env;
+  }
+  if (backend.id === "forge" && forge_url_env) {
+    backend.base_url = forge_url_env;
+  }
+
   if (backend.inputs) {
     backend.inputs.forEach(function (input) {
       input.value = input.default;
@@ -90,17 +100,18 @@ const backend_options = [
     id: "local",
     backends: [
       {
-        label: "Automatic1111",
-        id: "automatic1111",
+        label: "Forge",
+        id: "forge",
       },
       { label: "Stable Diffusion", id: "stable_diffusion" },
     ],
   },
 ];
 
-const default_backend = backends.find(
-  (backend) => backend.original.id === "automatic1111"
-);
+const default_backend_id_env = import.meta.env.VITE_DEFAULT_BACKEND_ID;
+const default_backend =
+  backends.find((backend) => backend.original.id === default_backend_id_env) ||
+  backends.find((backend) => backend.original.id === "forge");
 const default_backend_id = default_backend.original.id;
 
 export const useBackendStore = defineStore({
@@ -654,9 +665,9 @@ export const useBackendStore = defineStore({
 
           await initGradio();
         } catch (e) {
-          if (this.backend_id === "automatic1111") {
+          if (this.backend_id === "forge") {
             error_message =
-              "You need to start the automatic1111 backend on your computer with '--no-gradio-queue --cors-allow-origins=http://localhost:5173,https://diffusionui.com'.";
+              "You need to start the Forge backend on your computer with '--no-gradio-queue --cors-allow-origins=http://localhost:5173,https://diffusionui.com'.";
           } else {
             error_message = "Error trying to download the gradio config";
           }

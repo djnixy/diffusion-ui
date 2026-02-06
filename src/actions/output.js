@@ -3,7 +3,7 @@ import { useOutputStore } from "@/stores/output";
 import { useUIStore } from "@/stores/ui";
 import { setViewportTransform } from "@/actions/editor";
 
-function handleOutputAutomatic1111(
+function handleOutputForge(
   json_result,
   images_with_metadata,
   backend_function
@@ -96,13 +96,9 @@ function handleOutputGradio(
   };
 
   if (backend.current_function.handle_output) {
-    if (backend.current_function.handle_output === "automatic1111") {
+    if (backend.current_function.handle_output === "forge") {
       const backend_function = backend.getFunction(backend_id, function_id);
-      handleOutputAutomatic1111(
-        json_result,
-        images_with_metadata,
-        backend_function
-      );
+      handleOutputForge(json_result, images_with_metadata, backend_function);
     }
   } else {
     handleOutputDefault(json_result, images_with_metadata);

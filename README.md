@@ -1,15 +1,15 @@
 # diffusion-ui
 
-This is a web interface frontend for generation of images using the
-[Automatic1111 fork](https://github.com/AUTOMATIC1111/stable-diffusion-webui) of
-[Stable Diffusion](https://github.com/CompVis/stable-diffusion).
+This is a web interface frontend for generation of images using
+[Stable Diffusion WebUI Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge)
+([Stable Diffusion](https://github.com/CompVis/stable-diffusion)).
 
 <p align="center">
   <img src="https://github.com/leszekhanusz/diffusion-ui/blob/main/doc/cute_bunny.gif" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/leszekhanusz/diffusion-ui/blob/main/doc/automatic1111_fullscreen.png" style="width: 100%"/>
+  <img src="https://github.com/leszekhanusz/diffusion-ui/blob/main/doc/forge_fullscreen.png" style="width: 100%"/>
 </p>
 
 ## Documentation
@@ -84,18 +84,18 @@ Then open `http://localhost:8080` in your browser.
 
 ## Backends
 
-### Automatic1111 Stable Diffusion
+### Stable Diffusion WebUI Forge
 
 #### local backend
 
-To be able to connect diffusion-ui to the Automatic1111 fork of Stable Diffusion from your own pc, you need to
+To be able to connect diffusion-ui to the Forge backend from your own pc, you need to
 run it with the following parameters: `--no-gradio-queue --cors-allow-origins=http://localhost:5173,https://diffusionui.com`.
 
 See the instructions [here](https://diffusionui.readthedocs.io/en/latest/backends/automatic1111.html).
 
 #### online colab backend
 
-If you can't run it locally, it is also possible to use the automatic1111 fork of Stable Diffusion with diffusion-ui online for free with this [Google Colab notebook](https://colab.research.google.com/github/leszekhanusz/diffusion-ui/blob/main/src/backends/colab/automatic1111.ipynb)
+If you can't run it locally, it is also possible to use Forge with diffusion-ui online for free with this [Google Colab notebook](https://colab.research.google.com/github/leszekhanusz/diffusion-ui/blob/main/src/backends/colab/forge.ipynb)
 
 ## License
 [MIT License](https://github.com/leszekhanusz/diffusion-ui/blob/main/LICENSE) for the code here.
